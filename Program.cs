@@ -93,6 +93,11 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "EliteCars API V1");
+    });
     app.UseCors("ProdCors");
 }
 

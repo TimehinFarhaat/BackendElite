@@ -31,6 +31,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseNpgsql(connectionString);
 });
 
+// 🔹 Cookie Authentication & Session
+ builder.Services.AddHttpClient();
+builder.Services.AddScoped<ClarifaiService>();
+builder.Services.AddHttpClient<ClarifaiService>(); 
+builder.Services.Configure<ClarifaiSettings>(builder.Configuration.GetSection("ClarifaiSettings")); builder.Services.Configure<AdminSettings>(builder.Configuration.GetSection("AdminSettings"));
+
 // 🔹 Services & DI
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

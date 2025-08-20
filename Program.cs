@@ -79,7 +79,7 @@ builder.Services.AddCors(options =>
 
     options.AddPolicy("ProdCors", policy =>
     {
-        policy.WithOrigins("https://elitecars.onrender.com") // your Render frontend
+        policy.WithOrigins("https://elitecars-api.onrender.com") // your Render frontend
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();

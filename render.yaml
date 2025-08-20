@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: elitecars-api
+    runtime: docker
+    plan: free
+    repo: https://github.com/TimehinFarhaat/BackendElite
+    branch: main
+
+    envVars:
+      - key: ASPNETCORE_ENVIRONMENT
+        value: Production
+      - key: ConnectionStrings__PostgresConnection
+        sync: false
+      - key: ClarifaiSettings__ApiKey
+        sync: false
+      - key: ClarifaiSettings__UserId
+        value: clarifai
+      - key: ClarifaiSettings__AppId
+        value: main
+      - key: ClarifaiSettings__ModelId
+        value: general-image-recognition
+      - key: ClarifaiSettings__ConfidenceThreshold
+        value: "0.85"
+      - key: AdminSettings__Username
+        value: dealer_admin
+      - key: AdminSettings__Password
+        sync: false

@@ -17,15 +17,11 @@ builder.Configuration
     .SetBasePath(env.ContentRootPath)
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-    .AddUserSecrets<Program>(optional: true)
     .AddEnvironmentVariables();
 
 // Database
 var connectionString = builder.Configuration.GetConnectionString(
     env.IsDevelopment() ? "DefaultConnection" : "PostgresConnection");
-
-Console.WriteLine($"📦 Using connection string: {connectionString}");
-Console.WriteLine($"🌍 Environment: {env.EnvironmentName}");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -35,27 +31,27 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseNpgsql(connectionString);
 });
 
-// 🔹 Cookie Authentication & Session
-builder.Services.AddHttpClient();
-builder.Services.AddScoped<ClarifaiService>();
-builder.Services.AddHttpClient<ClarifaiService>();
-
-builder.Services.Configure<ClarifaiSettings>(builder.Configuration.GetSection("ClarifaiSettings"));
-builder.Services.Configure<AdminSettings>(builder.Configuration.GetSection("AdminSettings"));
-
-// Services & DI
+// 🔹 Services & DI
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHttpContextAccessor();
 
+// Example scoped services
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<CarRepository>();
 builder.Services.AddScoped<ICarService, CarService>();
 builder.Services.AddScoped<IInquiryService, InquiryService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 
-// Session
+// 🔹 Session & Data Protection
+var keyPath = Path.Combine(Directory.GetCurrentDirectory(), "keys");
+Directory.CreateDirectory(keyPath);
+
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(keyPath))
+    .SetApplicationName("EliteCarsAPI");
+
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
@@ -71,7 +67,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("DevCors", policy =>
     {
-        policy.WithOrigins("https://localhost:7238") // frontend dev port
+        policy.WithOrigins("https://localhost:7238") // local frontend
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -79,7 +75,7 @@ builder.Services.AddCors(options =>
 
     options.AddPolicy("ProdCors", policy =>
     {
-        policy.WithOrigins("https://elitecars-api.onrender.com") // your Render frontend
+        policy.WithOrigins("https://frontelite.onrender.com") // deployed frontend
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -88,18 +84,11 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// 🔹 Middleware Pipeline
-app.UseSwagger();
-app.UseSwaggerUI();
-
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-// Use correct CORS based on environment
+// 🔹 Middleware pipeline
 if (app.Environment.IsDevelopment())
 {
+    app.UseSwagger();
+    app.UseSwaggerUI();
     app.UseCors("DevCors");
 }
 else
@@ -107,17 +96,19 @@ else
     app.UseCors("ProdCors");
 }
 
+app.UseHttpsRedirection();
+app.UseStaticFiles();
+app.UseRouting();
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
-// Ensure DB created & migrations applied
+// Optional: ensure DB migrations
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    //db.Database.Migrate();
+    // db.Database.Migrate();
 }
 
 app.Run();

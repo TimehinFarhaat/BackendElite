@@ -1,0 +1,61 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\OFFICE\\Documents\\Books\\Bincom\\FinalAssignment\\FinalAssignmentBackend\\wwwroot\\images\\043227e3-b7d3-4fe0-9fe8-f4cbcb51d6ae.jpg",
+      "PackagePath": "staticwebassets\\images\\043227e3-b7d3-4fe0-9fe8-f4cbcb51d6ae.jpg"
+    },
+    {
+      "Id": "C:\\Users\\OFFICE\\Documents\\Books\\Bincom\\FinalAssignment\\FinalAssignmentBackend\\wwwroot\\images\\0ad35bd6-d835-4a2e-a4df-13c19fb36261.jpg",
+      "PackagePath": "staticwebassets\\images\\0ad35bd6-d835-4a2e-a4df-13c19fb36261.jpg"
+    },
+    {
+      "Id": "C:\\Users\\OFFICE\\Documents\\Books\\Bincom\\FinalAssignment\\FinalAssignmentBackend\\wwwroot\\images\\1a7bcb3c-4ca0-497d-b9d1-1fe89c5ece0e.png",
+      "PackagePath": "staticwebassets\\images\\1a7bcb3c-4ca0-497d-b9d1-1fe89c5ece0e.png"
+    },
+    {
+      "Id": "C:\\Users\\OFFICE\\Documents\\Books\\Bincom\\FinalAssignment\\FinalAssignmentBackend\\wwwroot\\images\\1c3a43c9-9162-43c1-ba36-ad31103b057e.jpg",
+      "PackagePath": "staticwebassets\\images\\1c3a43c9-9162-43c1-ba36-ad31103b057e.jpg"
+    },
+    {
+      "Id": "C:\\Users\\OFFICE\\Documents\\Books\\Bincom\\FinalAssignment\\FinalAssignmentBackend\\wwwroot\\images\\25ea7adf-3bc9-4f88-88e6-b8f02016cc22.jpg",
+      "PackagePath": "staticwebassets\\images\\25ea7adf-3bc9-4f88-88e6-b8f02016cc22.jpg"
+    },
+    {
+      "Id": "C:\\Users\\OFFICE\\Documents\\Books\\Bincom\\FinalAssignment\\FinalAssignmentBackend\\wwwroot\\images\\42fede1a-b5b8-4c76-9941-c18db6ab2b87.jpg",
+      "PackagePath": "staticwebassets\\images\\42fede1a-b5b8-4c76-9941-c18db6ab2b87.jpg"
+    },
+    {
+      "Id": "C:\\Users\\OFFICE\\Documents\\Books\\Bincom\\FinalAssignment\\FinalAssignmentBackend\\wwwroot\\images\\50c01c09-15a7-4ebe-ba8e-b1727a64cc24.jpg",
+      "PackagePath": "staticwebassets\\images\\50c01c09-15a7-4ebe-ba8e-b1727a64cc24.jpg"
+    },
+    {
+      "Id": "C:\\Users\\OFFICE\\Documents\\Books\\Bincom\\FinalAssignment\\FinalAssignmentBackend\\wwwroot\\images\\61117f8a-39a4-4caf-bcc9-78b850444e27.jpg",
+      "PackagePath": "staticwebassets\\images\\61117f8a-39a4-4caf-bcc9-78b850444e27.jpg"
+    },
+    {
+      "Id": "C:\\Users\\OFFICE\\Documents\\Books\\Bincom\\FinalAssignment\\FinalAssignmentBackend\\wwwroot\\images\\7ad1cd1b-c1c9-4734-9fd2-c378537e705b.jpg",
+      "PackagePath": "staticwebassets\\images\\7ad1cd1b-c1c9-4734-9fd2-c378537e705b.jpg"
+    },
+    {
+      "Id": "C:\\Users\\OFFICE\\Documents\\Books\\Bincom\\FinalAssignment\\FinalAssignmentBackend\\wwwroot\\images\\9e105073-2ae5-4e3a-ad6e-64e8498f475b.jpg",
+      "PackagePath": "staticwebassets\\images\\9e105073-2ae5-4e3a-ad6e-64e8498f475b.jpg"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.FinalAssignmentBackend.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.build.FinalAssignmentBackend.props",
+      "PackagePath": "build\\FinalAssignmentBackend.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.FinalAssignmentBackend.props",
+      "PackagePath": "buildMultiTargeting\\FinalAssignmentBackend.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildTransitive.FinalAssignmentBackend.props",
+      "PackagePath": "buildTransitive\\FinalAssignmentBackend.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
